@@ -20,7 +20,7 @@
    - Android Native.
    - Kotlin Programming Language.
    - MVVM architecture Pattern.
-   - View Binding.
+   - View Binding, Coroutines.
    - S.O.L.I.D. Coding Principles.
 
 <b>Api:</b>
