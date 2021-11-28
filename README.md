@@ -7,6 +7,12 @@
 ![WhatsApp Image 2021-11-28 at 3 25 20 PM(4)](https://user-images.githubusercontent.com/77268176/143766437-db85b124-9c07-4dc5-9c77-ce25a47bba57.jpeg)
 
 
+<b>Apk
+   
+   [Download](https://github.com/xayappz/Bookz/blob/code-pushed/Bookz.apk)
+
+</b>
+
 <b>Functionalities:</b>
 
    1. Browse catalogues of books that are available.
