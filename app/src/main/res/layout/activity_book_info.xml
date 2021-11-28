@@ -58,7 +58,6 @@
 
         android:layout_below="@+id/searchView"
         android:layout_marginTop="12dp"
-
         android:layout_gravity="center"
         android:background="@color/grey_shade1"
         android:orientation="vertical">

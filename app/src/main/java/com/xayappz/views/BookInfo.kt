@@ -204,6 +204,7 @@ class BookInfo : AppCompatActivity() {
 
     }
 
+    @DelicateCoroutinesApi
     private fun getIntentTitle() {
         titleLbl = intent.getStringExtra("title").toString()
         initializeViewModel()
