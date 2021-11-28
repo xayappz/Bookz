@@ -2,11 +2,13 @@ package com.xayappz.adapters
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.xayappz.booksinfo.R
 import com.xayappz.booksinfo.databinding.ItemBookBinding
 import com.xayappz.models.BooksModel
@@ -19,6 +21,7 @@ data class BooksAdapter(var booksList: List<BooksModel>, var activity: Activity)
         return booksList[position]
     }
 
+
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
@@ -30,6 +33,7 @@ data class BooksAdapter(var booksList: List<BooksModel>, var activity: Activity)
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var holder: ViewHolder
+
         if (convertView == null) {
             val itemBinding: ItemBookBinding =
                 ItemBookBinding.inflate(LayoutInflater.from(parent!!.context), parent, false)
@@ -38,16 +42,20 @@ data class BooksAdapter(var booksList: List<BooksModel>, var activity: Activity)
             holder.view = itemBinding.root
             holder.view.tag = holder
         } else {
+
             holder = convertView.tag as ViewHolder
         }
+
         holder.binding.author.text = booksList[position].author
         holder.binding.titleofbook.text = booksList[position].bookName
+
         val urlImg = booksList[position].bookImg
+
         Glide.with(activity)
             .load(urlImg)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .centerCrop().placeholder(R.drawable.ic_round_preview_24)
             .into(holder.binding.imagebook)
-
         holder.view.setOnClickListener {
             Browser.navigateToChrome(booksList[position].url, activity)
         }

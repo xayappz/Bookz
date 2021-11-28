@@ -2,20 +2,18 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="12dp"
+    android:paddingTop="12dp"
 
-    xmlns:tools="http://schemas.android.com/tools">
+    >
 
     <GridView
 
         android:id="@+id/books_grid_view"
-        tools:listitem="@layout/item_book"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:numColumns="3"
-        android:animateLayoutChanges="true"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
-        android:layout_height="match_parent"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
