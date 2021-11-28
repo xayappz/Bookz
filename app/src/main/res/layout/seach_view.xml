@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/searchLinearView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangular"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_margin="12dp"
+        >
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_marginLeft="12dp"
+
+            android:layout_height="15dp"
+            android:adjustViewBounds="true"
+            android:id="@+id/search_mag_icon"
+
+            android:src="@drawable/ic_search"
+            android:visibility="visible" />
+
+
+        <EditText
+            android:id="@+id/searchEditText"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:hint="Search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:lines="1"
+            android:padding="16dp"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:fontFamily="@font/montserrat_regular"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_shade2"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/search_close_icon"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_cancel"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</RelativeLayout>

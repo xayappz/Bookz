@@ -1,0 +1,56 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.BooksMainTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/white_bg</item>
+        <item name="colorPrimaryVariant">@color/white_bg</item>
+        <item name="colorOnPrimary">@color/white_bg</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/white_bg</item>
+    </style>
+
+    <style name="Theme.BooksInfo" parent="Theme.Design.NoActionBar">
+            <item name="android:statusBarColor">@color/white_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimary">@color/white_bg</item>
+        <item name="colorPrimaryVariant">@color/white_bg</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColor">@color/app_color_primary</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+
+
+    </style>
+
+    <style name="Title_Heading1" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/app_color_accent</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">48dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">12dp</item>
+
+    </style>
+
+    <style name="Title_Heading2" parent="Title_Heading1">
+        <item name="android:textColor">@color/grey_shade3</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+
+
+    </style>
+
+    <style name="Category_Item" parent="Title_Heading1">
+        <item name="android:textColor">@color/grey_shade3</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textSize">20dp</item>
+
+    </style>
+
+
+</resources>
