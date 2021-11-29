@@ -1,6 +1,6 @@
 # Bookz
 <p align="center">
-<b>App Screenshots</b>
+<b>Screenshots</b>
    </p>
    
    
