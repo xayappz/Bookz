@@ -1,10 +1,22 @@
 # Bookz
 
-![WhatsApp Image 2021-11-28 at 3 25 20 PM](https://user-images.githubusercontent.com/77268176/143766436-012be045-81fe-4a58-822a-52774b408577.jpeg)
-![WhatsApp Image 2021-11-28 at 3 25 20 PM(1)](https://user-images.githubusercontent.com/77268176/143766435-569085c3-2841-435b-b94e-b4a2dc93f009.jpeg)
-![WhatsApp Image 2021-11-28 at 3 25 20 PM(2)](https://user-images.githubusercontent.com/77268176/143766434-d9f5ca37-3fe6-49ff-a7cc-b1d51bba3680.jpeg)
-![WhatsApp Image 2021-11-28 at 3 25 20 PM(3)](https://user-images.githubusercontent.com/77268176/143766438-397209a2-6cf6-426a-8fca-8b9120d49b69.jpeg)
-![WhatsApp Image 2021-11-28 at 3 25 20 PM(4)](https://user-images.githubusercontent.com/77268176/143766437-db85b124-9c07-4dc5-9c77-ce25a47bba57.jpeg)
+<b>App Screenshots</b>
+
+![A](https://user-images.githubusercontent.com/77268176/143837697-6a03bf57-3f54-4902-a1a8-902140986851.jpeg) 
+</br></br></br>
+![B](https://user-images.githubusercontent.com/77268176/143837712-38baec43-d386-4f1d-96dc-c96614e20414.jpeg)
+</br></br></br>
+![C](https://user-images.githubusercontent.com/77268176/143837711-0c4a06a9-ca7b-455d-9011-85ba48816625.jpeg)
+</br></br></br>
+![D](https://user-images.githubusercontent.com/77268176/143837709-955ae34d-08b5-4cfc-9466-b030c8ed2c63.jpeg)
+</br></br></br>
+![E](https://user-images.githubusercontent.com/77268176/143837707-45999ebd-cf6b-4564-8770-f860bb2e55f3.jpeg)
+</br></br></br>
+![F](https://user-images.githubusercontent.com/77268176/143838018-f7e17f8f-6194-4a0e-83ff-720072276975.jpeg)
+</br></br></br>
+
+
+
 
 
 <b>Apk
@@ -40,6 +52,9 @@ Retrofit (Networking) - https://github.com/square/retrofit/blob/master/LICENSE.t
 
 Glide (Image Loading) - https://github.com/bumptech/glide/blob/master/LICENSE
 
+Lottie (Loading Animation) - https://github.com/airbnb/lottie-android/blob/master/LICENSE
+
+Intuit Sdp (Utility) - https://github.com/intuit/sdp/blob/master/LICENSE
 
 Thanks !
    
