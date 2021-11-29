@@ -6,19 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.xayappz.views.BookInfo">
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="14dp">
+        android:padding="@dimen/_12sdp">
 
 
         <ImageView
             android:id="@+id/back_bn_iv"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
@@ -26,13 +25,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/maintitle"
+            style="@style/Title_Heading1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            style="@style/Title_Heading1"
             android:layout_toEndOf="@+id/category_icon"
             android:text="@string/title_main_heading1"
-            android:textSize="34dp"
+            android:textSize="34sp"
             android:textStyle="bold" />
 
 
@@ -43,11 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleView"
-
-        android:layout_gravity="center"
         android:orientation="vertical">
 
-        <include layout="@layout/seach_view" />
+        <include layout="@layout/search_view" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -55,10 +52,8 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_below="@+id/searchView"
-        android:layout_marginTop="12dp"
-        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_12sdp"
         android:background="@color/grey_shade1"
         android:orientation="vertical">
 
@@ -66,5 +61,26 @@
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_below="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_shade1"
+        android:id="@+id/nothing_lay"
+        android:visibility="gone"
+        android:orientation="vertical">
 
+        <include layout="@layout/nothing_found" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="true"
+        android:visibility="gone"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading_anim" />
 </RelativeLayout>

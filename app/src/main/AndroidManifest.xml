@@ -14,8 +14,7 @@
         <activity
             android:name="com.xayappz.views.BookInfo"
             android:exported="true"
-            android:launchMode="singleInstance"
-
+            android:launchMode="singleTop"
             android:theme="@style/Theme.BooksInfo" />
         <activity
             android:name="com.xayappz.views.MainActivity"

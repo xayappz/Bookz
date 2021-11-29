@@ -6,5 +6,6 @@ freely search its database of books,
 annotations, and reviews.</string>
     <string name="no_internet">No internet !</string>
     <string name="some_error">Some error occurred !</string>
+    <string name="nothing_found">Nothing Found, try again.</string>
 
 </resources>

@@ -21,7 +21,7 @@
 
 <b>Apk
    
-   [Download](https://github.com/xayappz/Bookz/blob/code-pushed/Bookz.apk)
+   [Download Apk](https://github.com/xayappz/Bookz/blob/code-pushed/Bookz_App.apk)
 
 </b>
 
