@@ -20,7 +20,7 @@
         <item name="colorPrimaryVariant">@color/white_bg</item>
         <item name="android:windowBackground">@color/white</item>
         <item name="android:textColor">@color/app_color_primary</item>
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
 
 
@@ -29,9 +29,9 @@
     <style name="Title_Heading1" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/app_color_accent</item>
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
-        <item name="android:textSize">48dp</item>
+        <item name="android:textSize">48sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_marginLeft">@dimen/_12sdp</item>
 
     </style>
 
@@ -39,8 +39,8 @@
         <item name="android:textColor">@color/grey_shade3</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginTop">@dimen/_12sdp</item>
 
 
     </style>
@@ -48,9 +48,17 @@
     <style name="Category_Item" parent="Title_Heading1">
         <item name="android:textColor">@color/grey_shade3</item>
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
 
     </style>
+
+    <style name="CardViewStyle" parent="CardView.Light">
+        <item name="cardCornerRadius">@dimen/_5sdp</item>
+        <item name="cardElevation">@dimen/_7sdp</item>
+        <item name="contentPadding">@dimen/_12sdp</item>
+        <item name="backgroundColor">@color/white_bg</item>
+    </style>
+
 
 
 </resources>

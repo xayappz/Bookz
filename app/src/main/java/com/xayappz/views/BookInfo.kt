@@ -2,7 +2,12 @@ package com.xayappz.views
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -25,12 +30,10 @@ import com.xayappz.viewmodels.BooksViewModel
 import com.xayappz.viewmodels.BooksViewModelFactory
 import kotlinx.android.synthetic.main.activity_book_info.*
 import kotlinx.android.synthetic.main.books.*
-import kotlinx.android.synthetic.main.seach_view.*
+import kotlinx.android.synthetic.main.search_view.*
 import kotlinx.coroutines.*
-import android.R
-
-
-
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class BookInfo : AppCompatActivity() {
@@ -39,16 +42,35 @@ class BookInfo : AppCompatActivity() {
     var booksList: ArrayList<BooksModel> = ArrayList()
     var adapter: BooksAdapter? = null
     lateinit var progressDialog: ProgressDialog
-
+    val TRIGGER_SERACH = 1
+    val SEARCH_TRIGGER_DELAY_IN_MS: Long = 1000
+    lateinit var handler: Handler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.xayappz.booksinfo.R.layout.activity_book_info)
 
         getIntentTitle()
 
+
+        handler = object : Handler() {
+            override fun handleMessage(msg: Message) {
+                if (msg.what === TRIGGER_SERACH) {
+
+                    GlobalScope.launch(Dispatchers.Main) {
+                        val query = searchEditText.text.toString()
+                        loading_view.visibility = View.VISIBLE
+                        getSearchResult(query)
+
+
+                    }
+
+                }
+            }
+        }
+
     }
 
-    private fun ProgressShow() {
+    private fun progressShow() {
         progressDialog = ProgressDialog(this, AlertDialog.THEME_HOLO_LIGHT)
         progressDialog.setTitle("Hold On...")
         progressDialog.setMessage("Getting $titleLbl Books")
@@ -67,8 +89,8 @@ class BookInfo : AppCompatActivity() {
         val bookService = RetrofitHelper.getInstance().create(BookService::class.java)
         val repository = BooksRepository(bookService, application)
         booksViewModel = ViewModelProvider(
-            this,
-            BooksViewModelFactory(repository, titleLbl)
+                this,
+                BooksViewModelFactory(repository, titleLbl)
         )[BooksViewModel::class.java]
 
     }
@@ -78,9 +100,10 @@ class BookInfo : AppCompatActivity() {
     private fun initializeViews() {
         maintitle.text = titleLbl
         back_bn_iv.setOnClickListener {
-            finish()
+            startActivity(Intent(this@BookInfo, MainActivity::class.java))
         }
-        ProgressShow()
+        setBackgroundofSearch("#F0F0F6")
+        progressShow()
         getData()
         getSearch()
 
@@ -92,35 +115,59 @@ class BookInfo : AppCompatActivity() {
         searchEditText.setOnFocusChangeListener { view, b ->
             if (view.isFocused) {
                 search_close_icon.visibility = View.VISIBLE
+                setBackgroundofSearch("#5E56E7")
             }
+
         }
         search_close_icon.setOnClickListener {
             searchEditText.setText("")
             search_close_icon.visibility = View.GONE
             searchEditText.clearFocus()
+            nothing_lay.visibility = View.GONE
             HideKeyboard.hideKeyboard(this, it)
-
+            setBackgroundofSearch("#F0F0F6")
         }
         searchEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 if (!isOnline.isOnline(applicationContext)) {
-                    Toaster.showToast(getString(com.xayappz.booksinfo.R.string.no_internet), this@BookInfo)
+                    Toaster.showToast(
+                            getString(com.xayappz.booksinfo.R.string.no_internet),
+                            this@BookInfo
+                    )
                     return
-                }
-                val query = s.toString()
-                GlobalScope.launch(Dispatchers.Main) {
-                    getSearchResult(query)
-
-
                 }
             }
 
 
             override fun afterTextChanged(s: Editable) {
+                if (!isOnline.isOnline(applicationContext)) {
+                    Toaster.showToast(
+                            getString(com.xayappz.booksinfo.R.string.no_internet),
+                            this@BookInfo
+                    )
+                    return
+                }
+                handler.removeMessages(TRIGGER_SERACH);
+                handler.sendEmptyMessageDelayed(TRIGGER_SERACH, SEARCH_TRIGGER_DELAY_IN_MS);
+
+
             }
+
+
         })
     }
+
+    private fun setBackgroundofSearch(clr: String?) {
+        val drawable = GradientDrawable()
+        drawable.shape = GradientDrawable.RECTANGLE
+        drawable.setStroke(2, Color.parseColor(clr))
+        drawable.cornerRadius = 5f
+        drawable.setColor(Color.parseColor("#F0F0F6"));
+
+        searchLinearView.setBackgroundDrawable(drawable)
+    }
+
 
     private suspend fun getSearchResult(query: String) {
 
@@ -144,7 +191,7 @@ class BookInfo : AppCompatActivity() {
 
             if (!BookList.formats.image_jpeg.isNullOrEmpty()) {
                 author = if (
-                    BookList.authors.isNullOrEmpty()) {
+                        BookList.authors.isNullOrEmpty()) {
                     "-"
                 } else {
                     BookList.authors[0].name
@@ -163,18 +210,28 @@ class BookInfo : AppCompatActivity() {
                 }
 
                 val booksModel =
-                    BooksModel(
-                        BookList.formats.image_jpeg,
-                        BookList.title,
-                        author, url
-                    )
+                        BooksModel(
+                                BookList.formats.image_jpeg,
+                                BookList.title,
+                                author, url
+                        )
                 booksList.add(booksModel)
             }
 
         }
+        loading_view.visibility = View.GONE
+        if (booksList.isEmpty()) {
+            nothing_lay.visibility = View.VISIBLE
+            loading_view.visibility = View.GONE
+        } else {
+            nothing_lay.visibility = View.GONE
+
+        }
+
         adapter = BooksAdapter(booksList, this)
         books_grid_view?.adapter = adapter
-        val animation: Animation = AnimationUtils.loadAnimation(this, com.xayappz.booksinfo.R.anim.grid_anim)
+        val animation: Animation =
+                AnimationUtils.loadAnimation(this, com.xayappz.booksinfo.R.anim.grid_anim)
         val controller = GridLayoutAnimationController(animation, .2f, .2f)
         books_grid_view?.layoutAnimation = controller
 
@@ -185,7 +242,7 @@ class BookInfo : AppCompatActivity() {
             when (it) {
                 is Response.Loading -> {
 
-                    ProgressShow()
+                    progressShow()
                 }
                 is Response.Success -> {
                     getData(it)
