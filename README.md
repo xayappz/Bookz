@@ -1,4 +1,4 @@
-# Bookz
+# Bookz - A minilistic & User friendly Android App to read books
 <p align="center">
 <b>Screenshots</b>
    </p>
